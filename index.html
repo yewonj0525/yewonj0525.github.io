@@ -1,34 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yewon Joung</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ── DARK MODE (default) ─────────────────────────────── */
+    /* ── LIGHT MODE (default) ────────────────────────────── */
     :root,
-    [data-theme="dark"] {
-      --bg: #212121;
-      --surface: #1a1a24;
-      --card: #21212e;
-      --border: #2e2e40;
-      --accent: #c6566d;
-      --accent-soft: #d4808f;
-      --accent2: #7daacb;
-      --accent2-soft: #9dbfd8;
-      --text: #e8e6f0;
-      --muted: #8a889a;
-      --tag-bg: #2e1e24;
-      --tag-text: #e0929f;
-      --tag2-bg: #2b2014;
-      --tag2-text: #d4a070;
-      --nav-bg: rgba(15,15,19,.85);
-      --toggle-bg: #2e2e40;
-      --toggle-icon: "☀️";
-    }
-
-    /* ── LIGHT MODE ──────────────────────────────────────── */
     [data-theme="light"] {
       --bg: #faf8f5;
       --surface: #f2ede8;
@@ -42,11 +21,30 @@
       --muted: #6b6058;
       --tag-bg: #f0dde0;
       --tag-text: #8a2a3a;
-      --tag2-bg: #f0e4d0;
-      --tag2-text: #7a4a18;
+      --tag2-bg: #dceef8;
+      --tag2-text: #2a6080;
       --nav-bg: rgba(250,248,245,.88);
       --toggle-bg: #d5cbc0;
-      --toggle-icon: "🌙";
+    }
+
+    /* ── DARK MODE ───────────────────────────────────────── */
+    [data-theme="dark"] {
+      --bg: #0f0f13;
+      --surface: #1a1a24;
+      --card: #21212e;
+      --border: #2e2e40;
+      --accent: #c6566d;
+      --accent-soft: #d4808f;
+      --accent2: #7daacb;
+      --accent2-soft: #9dbfd8;
+      --text: #e8e6f0;
+      --muted: #8a889a;
+      --tag-bg: #2e1e24;
+      --tag-text: #e0929f;
+      --tag2-bg: #1a2535;
+      --tag2-text: #9dbfd8;
+      --nav-bg: rgba(15,15,19,.85);
+      --toggle-bg: #2e2e40;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -107,10 +105,10 @@
       white-space: nowrap;
     }
     .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
-    .toggle-sun  { display: inline; }
-    .toggle-moon { display: none;   }
-    [data-theme="light"] .toggle-sun  { display: none;   }
-    [data-theme="light"] .toggle-moon { display: inline; }
+    .toggle-sun  { display: none;   }
+    .toggle-moon { display: inline; }
+    [data-theme="dark"] .toggle-sun  { display: inline; }
+    [data-theme="dark"] .toggle-moon { display: none;   }
 
     /* ── HERO ─────────────────────────────── */
     .hero {
@@ -138,7 +136,36 @@
       color: var(--muted);
       max-width: 540px;
     }
-    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .4rem; }
+
+    /* ── HERO CONTACT BUTTONS ────────────── */
+    .hero-contact {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-top: .2rem;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .45rem 1rem;
+      border-radius: 8px;
+      font-size: .85rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: transparent;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .contact-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .contact-btn .icon { font-size: .95rem; }
+
+    /* ── BUTTONS (general) ───────────────── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -187,7 +214,7 @@
     /* ── ABOUT ───────────────────────────── */
     .about-body { color: var(--muted); font-size: 1rem; max-width: 640px; }
     .about-body p + p { margin-top: .9rem; }
-    .about-body a { color: var(--accent-soft); text-decoration: none; }
+    .about-body a { color: var(--accent2-soft); text-decoration: none; }
     .about-body a:hover { text-decoration: underline; }
 
     /* ── INTERESTS ───────────────────────── */
@@ -257,10 +284,9 @@
     }
 
     /* ── CONTACT ─────────────────────────── */
-    .contact-body { color: var(--muted); font-size: .98rem; }
+    .contact-body { color: var(--muted); font-size: .98rem; max-width: 600px; }
     .contact-body a { color: var(--accent-soft); text-decoration: none; }
     .contact-body a:hover { text-decoration: underline; }
-    .social-row { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.4rem; }
 
     /* ── FOOTER ──────────────────────────── */
     footer {
@@ -302,15 +328,23 @@
 <!-- HERO -->
 <div class="hero">
   <p class="hero-greeting">👋 Hi there, I'm</p>
-  <h1><span>Yewon</span><br /><span>Joung</span></h1>
+  <h1><span>Yewon Joung</span></h1>
   <p class="hero-sub">
     CS Master's student @ UNC Chapel Hill — exploring the intersection of
     machine learning, biomedical data, and NLP.
   </p>
-  <div class="hero-links">
-    <a class="btn btn-primary" href="#projects">View Projects</a>
-    <a class="btn btn-outline" href="#" target="_blank">📄 Resume</a>
-    <a class="btn btn-outline" href="https://github.com/yewonj0525" target="_blank">GitHub</a>
+  <div class="hero-contact">
+    <a class="contact-btn" href="mailto:ywjoung@cs.unc.edu">
+      <span class="icon">✉️</span> ywjoung@cs.unc.edu
+    </a>
+    <!-- CV: upload your CV PDF to the repository as "cv.pdf", then this link will work -->
+    <a class="contact-btn" href="cv.pdf" target="_blank">
+      <span class="icon">📄</span> CV
+    </a>
+    <!-- LinkedIn: replace the href with your LinkedIn profile URL -->
+    <a class="contact-btn" href="https://www.linkedin.com/in/" target="_blank">
+      <span class="icon">🔗</span> LinkedIn
+    </a>
   </div>
 </div>
 
@@ -468,16 +502,10 @@
   <h2 class="section-title">Say hi 👋</h2>
   <div class="contact-body">
     <p>
-      Always happy to chat about research, collaborations, or just cool papers.
-      Feel free to reach out at
-      <a href="mailto:yewonj262@gmail.com">yewonj262@gmail.com</a>.
+      I'm always happy to chat — whether it's about research, a potential collaboration,
+      or just a cool paper you think I should read. The best way to reach me is via email at
+      <a href="mailto:ywjoung@cs.unc.edu">ywjoung@cs.unc.edu</a>.
     </p>
-    <div class="social-row">
-      <a class="btn btn-outline" href="https://github.com/yewonj0525" target="_blank">GitHub</a>
-      <a class="btn btn-outline" href="mailto:yewonj262@gmail.com">Email</a>
-      <a class="btn btn-outline" href="#" target="_blank">LinkedIn</a>
-      <a class="btn btn-outline" href="#" target="_blank">📄 CV</a>
-    </div>
   </div>
 </section>
 
