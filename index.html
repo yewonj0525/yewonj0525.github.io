@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yewon Joung</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── DARK MODE (default) ─────────────────────────────── */
+    :root,
+    [data-theme="dark"] {
+      --bg: #0f0f13;
+      --surface: #1a1a24;
+      --card: #21212e;
+      --border: #2e2e40;
+      --accent: #c6566d;
+      --accent-soft: #d4808f;
+      --accent2: #c68956;
+      --accent2-soft: #d4a070;
+      --text: #e8e6f0;
+      --muted: #8a889a;
+      --tag-bg: #2e1e24;
+      --tag-text: #e0929f;
+      --tag2-bg: #2b2014;
+      --tag2-text: #d4a070;
+      --nav-bg: rgba(15,15,19,.85);
+      --toggle-bg: #2e2e40;
+      --toggle-icon: "☀️";
+    }
+
+    /* ── LIGHT MODE ──────────────────────────────────────── */
+    [data-theme="light"] {
+      --bg: #faf8f5;
+      --surface: #f2ede8;
+      --card: #ebe5de;
+      --border: #d5cbc0;
+      --accent: #b0394f;
+      --accent-soft: #c6566d;
+      --accent2: #a86830;
+      --accent2-soft: #c68956;
+      --text: #1e1a18;
+      --muted: #6b6058;
+      --tag-bg: #f0dde0;
+      --tag-text: #8a2a3a;
+      --tag2-bg: #f0e4d0;
+      --tag2-text: #7a4a18;
+      --nav-bg: rgba(250,248,245,.88);
+      --toggle-bg: #d5cbc0;
+      --toggle-icon: "🌙";
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background .3s, color .3s;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-left { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── THEME TOGGLE ────────────────────── */
+    .theme-toggle {
+      background: var(--toggle-bg);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: .3rem .75rem;
+      cursor: pointer;
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
+    .toggle-sun  { display: inline; }
+    .toggle-moon { display: none;   }
+    [data-theme="light"] .toggle-sun  { display: none;   }
+    [data-theme="light"] .toggle-moon { display: inline; }
+
+    /* ── HERO ─────────────────────────────── */
+    .hero {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 100px 2rem 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .hero-greeting {
+      font-size: .9rem;
+      color: var(--accent2);
+      font-weight: 500;
+      letter-spacing: .08em;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 540px;
+    }
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .4rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .55rem 1.2rem;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--accent-soft); }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SECTION WRAPPER ─────────────────── */
+    section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 70px 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: .7rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── ABOUT ───────────────────────────── */
+    .about-body { color: var(--muted); font-size: 1rem; max-width: 640px; }
+    .about-body p + p { margin-top: .9rem; }
+    .about-body a { color: var(--accent-soft); text-decoration: none; }
+    .about-body a:hover { text-decoration: underline; }
+
+    /* ── INTERESTS ───────────────────────── */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .interest-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .interest-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    .interest-icon { font-size: 1.6rem; margin-bottom: .5rem; }
+    .interest-title { font-weight: 600; font-size: .95rem; margin-bottom: .3rem; }
+    .interest-desc { font-size: .82rem; color: var(--muted); }
+
+    /* ── PROJECTS ────────────────────────── */
+    .projects-list { display: flex; flex-direction: column; gap: 1.1rem; }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem 1.7rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: .7rem;
+    }
+    .project-title {
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--text);
+    }
+    .project-desc { font-size: .88rem; color: var(--muted); }
+    .tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .9rem; }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: .75rem;
+      font-weight: 500;
+      padding: .25rem .7rem;
+      border-radius: 20px;
+    }
+    .tag2 {
+      background: var(--tag2-bg);
+      color: var(--tag2-text);
+      font-size: .75rem;
+      font-weight: 500;
+      padding: .25rem .7rem;
+      border-radius: 20px;
+    }
+
+    /* ── CONTACT ─────────────────────────── */
+    .contact-body { color: var(--muted); font-size: .98rem; }
+    .contact-body a { color: var(--accent-soft); text-decoration: none; }
+    .contact-body a:hover { text-decoration: underline; }
+    .social-row { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.4rem; }
+
+    /* ── FOOTER ──────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: .8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE ──────────────────────── */
+    @media (max-width: 540px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { padding: 70px 1.2rem 60px; }
+      section { padding: 55px 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a class="nav-logo" href="#">YJ</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#interests">Interests</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <span class="toggle-sun">☀️ Light</span>
+    <span class="toggle-moon">🌙 Dark</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-greeting">👋 Hi there, I'm</p>
+  <h1><span>Yewon</span><br /><span>Joung</span></h1>
+  <p class="hero-sub">
+    CS Master's student @ UNC Chapel Hill — exploring the intersection of
+    machine learning, biomedical data, and NLP.
+  </p>
+  <div class="hero-links">
+    <a class="btn btn-primary" href="#projects">View Projects</a>
+    <a class="btn btn-outline" href="#" target="_blank">📄 Resume</a>
+    <a class="btn btn-outline" href="https://github.com/yewonj0525" target="_blank">GitHub</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About</p>
+  <h2 class="section-title">Who I am</h2>
+  <div class="about-body">
+    <p>
+      I'm a graduate student in Computer Science at the
+      <a href="https://cs.unc.edu" target="_blank">University of North Carolina at Chapel Hill</a>.
+      Before diving into CS, I studied Mechanical Engineering at
+      <a href="https://www.sookmyung.ac.kr" target="_blank">Sookmyung Women's University</a> in Seoul, Korea.
+    </p>
+    <p>
+      My background is a bit of a mix — engineering intuition meets machine
+      learning curiosity. I'm especially drawn to problems where data is messy
+      and real-world stakes are high: medical imaging, clinical NLP, and
+      biosignal analysis. I love figuring out how to make models that actually
+      work outside the lab.
+    </p>
+    <p>
+      When I'm not coding, I'm probably exploring Chapel Hill's coffee shops
+      or watching something with subtitles I barely need.
+    </p>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section id="interests">
+  <p class="section-label">Research Interests</p>
+  <h2 class="section-title">What I think about</h2>
+  <div class="interests-grid">
+    <div class="interest-card">
+      <div class="interest-icon">🧬</div>
+      <div class="interest-title">Biomedical ML</div>
+      <div class="interest-desc">Applying machine learning to clinical and biological data to support better healthcare decisions.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">💬</div>
+      <div class="interest-title">Natural Language Processing</div>
+      <div class="interest-desc">Domain adaptation, LLMs, and making NLP models work in specialized fields like law and medicine.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🔊</div>
+      <div class="interest-title">Multimodal Learning</div>
+      <div class="interest-desc">Combining different data types — text, audio, clinical signals — to build richer predictive models.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🛡️</div>
+      <div class="interest-title">Responsible AI</div>
+      <div class="interest-desc">Hate speech detection, fairness, and making sure models behave well in the wild.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Projects</p>
+  <h2 class="section-title">Things I've built</h2>
+  <div class="projects-list">
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Glioblastoma Survival Prediction from Mass Cytometry via Cellular Neighborhood Features</span>
+      </div>
+      <p class="project-desc">
+        Adapted the Cellular Neighborhood (CN) framework to non-spatial CyTOF data by constructing k-NN graphs
+        in protein expression space. Evaluated whether CN-augmented features improve GBM patient survival
+        prediction over a cell-type abundance baseline using Cox proportional hazards regression with
+        leave-one-out cross-validation.
+      </p>
+      <div class="tags">
+        <span class="tag">Survival Analysis</span>
+        <span class="tag2">CyTOF</span>
+        <span class="tag">Graph ML</span>
+        <span class="tag2">Bioinformatics</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Domain Adaptation for Legal QA: LoRA vs. DAPT</span>
+      </div>
+      <p class="project-desc">
+        Analyzed LoRA and DAPT for legal question answering, identifying a low-resource break-even point
+        where domain-adaptive pretraining outperforms full fine-tuning. Provides practical guidance on
+        choosing adaptation strategies under resource constraints.
+      </p>
+      <div class="tags">
+        <span class="tag">NLP</span>
+        <span class="tag2">LLM Fine-tuning</span>
+        <span class="tag">LoRA</span>
+        <span class="tag2">Legal AI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">SENTRY: Context-Aware Hate Speech Detection with Set-based Learning</span>
+      </div>
+      <p class="project-desc">
+        Developed a context-aware hate speech detection model using DistilBERT and set-based learning.
+        Achieved a macro-F1 score of 0.847 through contrastive training, improving robustness across
+        diverse and nuanced language patterns.
+      </p>
+      <div class="tags">
+        <span class="tag">NLP</span>
+        <span class="tag2">DistilBERT</span>
+        <span class="tag">Contrastive Learning</span>
+        <span class="tag2">Safety AI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Multimodal Depression Detection using Clinical Text and Audio</span>
+      </div>
+      <p class="project-desc">
+        Built a multimodal depression detection model combining clinical text and acoustic features
+        using Bi-LSTM and CNN architectures. Improved predictive performance through window size
+        optimization on real-world datasets.
+      </p>
+      <div class="tags">
+        <span class="tag">Multimodal ML</span>
+        <span class="tag2">Bi-LSTM</span>
+        <span class="tag">CNN</span>
+        <span class="tag2">Mental Health</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Respiratory Disease Classification from Breathing Sounds</span>
+      </div>
+      <p class="project-desc">
+        Built a CNN-based respiratory disease classifier using MFCC features extracted from breathing
+        audio. Analyzed challenges including data imbalance, overfitting, and generalization — with
+        a focus on real-world deployment considerations.
+      </p>
+      <div class="tags">
+        <span class="tag">CNN</span>
+        <span class="tag2">Audio ML</span>
+        <span class="tag">MFCC</span>
+        <span class="tag2">Healthcare</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">Say hi 👋</h2>
+  <div class="contact-body">
+    <p>
+      Always happy to chat about research, collaborations, or just cool papers.
+      Feel free to reach out at
+      <a href="mailto:yewonj262@gmail.com">yewonj262@gmail.com</a>.
+    </p>
+    <div class="social-row">
+      <a class="btn btn-outline" href="https://github.com/yewonj0525" target="_blank">GitHub</a>
+      <a class="btn btn-outline" href="mailto:yewonj262@gmail.com">Email</a>
+      <a class="btn btn-outline" href="#" target="_blank">LinkedIn</a>
+      <a class="btn btn-outline" href="#" target="_blank">📄 CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Yewon Joung · Built with ☕ and curiosity
+</footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    localStorage.setItem('theme', html.getAttribute('data-theme'));
+  }
+
+  // Remember user's preference across page reloads
+  (function () {
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  })();
+</script>
+
+</body>
+</html>
