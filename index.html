@@ -304,6 +304,22 @@
       .hero { padding: 70px 1.2rem 60px; }
       section { padding: 55px 1.2rem; }
     }
+.project-links { margin-top: 1rem; display: flex; gap: .6rem; }
+.project-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .3rem .8rem;
+  border-radius: 6px;
+  font-size: .78rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: transparent;
+  transition: all .2s;
+}
+.project-link-btn:hover { border-color: var(--accent); color: var(--accent); }
   </style>
 </head>
 <body>
@@ -414,6 +430,11 @@
       <div class="project-header">
         <span class="project-title">Glioblastoma Survival Prediction from Mass Cytometry via Cellular Neighborhood Features</span>
       </div>
+      <div class="project-links">
+        <a class="project-link-btn" href="https://github.com/yewonj0525/gbm-survival-cytof" target="_blank">
+          🐙 GitHub
+        </a>
+      </div>
       <p class="project-desc">
         Adapted the Cellular Neighborhood (CN) framework to non-spatial CyTOF data by constructing k-NN graphs
         in protein expression space. Evaluated whether CN-augmented features improve GBM patient survival
@@ -432,6 +453,11 @@
       <div class="project-header">
         <span class="project-title">Domain Adaptation for Legal QA: LoRA vs. DAPT</span>
       </div>
+      <div class="project-links">
+        <a class="project-link-btn" href="https://github.com/yewonj0525/lora-dapt-legal-qa" target="_blank">
+          🐙 GitHub
+        </a>
+      </div>
       <p class="project-desc">
         Analyzed LoRA and DAPT for legal question answering, identifying a low-resource break-even point
         where domain-adaptive pretraining outperforms full fine-tuning. Provides practical guidance on
@@ -448,6 +474,11 @@
     <div class="project-card">
       <div class="project-header">
         <span class="project-title">SENTRY: Context-Aware Hate Speech Detection with Set-based Learning</span>
+      </div>
+      <div class="project-links">
+        <a class="project-link-btn" href="https://github.com/yewonj0525/sentry-hate-speech-detection" target="_blank">
+          🐙 GitHub
+        </a>
       </div>
       <p class="project-desc">
         Developed a context-aware hate speech detection model using DistilBERT and set-based learning.
