@@ -304,7 +304,7 @@
       .hero { padding: 70px 1.2rem 60px; }
       section { padding: 55px 1.2rem; }
     }
-.project-links { margin-top: 1rem; display: flex; gap: .6rem; }
+.project-links { margin-top: 1rem; display: flex; gap: .6rem; margin_bottom: 1rem;}
 .project-link-btn {
   display: inline-flex;
   align-items: center;
@@ -438,11 +438,11 @@
       <p class="project-desc">
         Adapted the Cellular Neighborhood (CN) framework to non-spatial CyTOF mass cytometry data from 28 GBM patients (131,880 cells, 35 protein markers).
         Constructed k-NN graphs in protein expression space as a substitute for physical tissue proximity, and engineered patient-level CN frequency features via MiniBatchKMeans clustering.
-
+        <br><br>
         CN-augmented features outperformed cell-type frequency baselines across all survival metrics:
-        - C-index: 0.7005 (+16.4% vs. Leiden baseline)
-        - AUC at 300 days: 0.6738 (+22.3%)
-        - Log-rank p-value: 0.00238 (statistically significant risk group separation)
+        <br>• C-index: 0.7005 (+16.4% vs. Leiden baseline)
+        <br>• AUC at 300 days: 0.6738 (+22.3%)
+        <br>• Log-rank p-value: 0.00238 (statistically significant risk group separation)
       </p>
       <div class="tags">
         <span class="tag">Survival Analysis</span>
@@ -463,11 +463,11 @@
       </div>
       <p class="project-desc">
         Compared two parameter-efficient adaptation strategies — LoRA and DAPT — on RoBERTa-base for the CaseHOLD legal QA benchmark (5-way multiple choice, 53K examples).
-
+        <br><br>
         Key findings:
-        - DAPT-1000 achieved 74.73% accuracy, outperforming full fine-tuning (+0.69%)
-        - LoRA matched 95% of baseline performance using only 0.24% of parameters (0.3M vs 124.6M)
-        - Break-even point: DAPT outperforms LoRA with fewer than 500 unlabeled documents
+        <br>• DAPT-1000 achieved 74.73% accuracy, outperforming full fine-tuning (+0.69%)
+        <br>• LoRA matched 95% of baseline performance using only 0.24% of parameters (0.3M vs 124.6M)
+        <br>• Break-even point: DAPT outperforms LoRA with fewer than 500 unlabeled documents
       </p>
       <div class="tags">
         <span class="tag">NLP</span>
@@ -490,10 +490,10 @@
         Developed SENTRY, a set-based hate speech detection framework that aggregates semantically related tweets rather than classifying posts in isolation. Used 
         DistilBERT with a permutation-equivariant architecture 
         and hierarchical DPO contrastive loss.
-
+        <br><br>
         Evaluated on Davidson dataset (24,783 tweets, 3-way classification):
-        - Macro-F1: 0.847 — substantially outperforming single-instance baselines
-        - Set-based aggregation particularly improved minority class (hate speech) detection
+        <br>• Macro-F1: 0.847 — substantially outperforming single-instance baselines
+        <br>• Set-based aggregation particularly improved minority class (hate speech) detection
       </p>
       <div class="tags">
         <span class="tag">NLP</span>
@@ -510,11 +510,11 @@
       <p class="project-desc">
         Built a multimodal depression detection model using Korean psychiatric consultation data (293 patients, 19,427 sentences) provided by ETRI. Fused clinical text features (Bi-LSTM with BPE tokenization) and 
         acoustic features (Spectral CNN on MFCC) through a joint fully-connected layer.
-
+        <br><br>
         Introduced window size optimization to determine the optimal dialogue context length:
-        - Best configuration: window=6, overlap=3
-        - Final accuracy: 76.92%, F1: 73.37%
-        - Outperformed text-only and audio-only baselines
+        <br>• Best configuration: window=6, overlap=3
+        <br>• Final accuracy: 76.92%, F1: 73.37%
+        <br>• Outperformed text-only and audio-only baselines
       </p>
       <div class="tags">
         <span class="tag">Multimodal ML</span>
@@ -531,7 +531,7 @@
       <p class="project-desc">
         Built a CNN-based respiratory disease classifier using MFCC features extracted from 917 breathing audio files (126 patients, 6 disease classes). 
         Investigated the effect of 5 data augmentation techniques (white noise, shifting, stretching, reverse, minus) on model performance under severe class imbalance.
-
+        <br><br>
         Key finding:
         audio augmentation paradoxically decreased accuracy (mean accuracy dropped from ~0.91 to ~0.80), revealing that MFCC feature similarity across augmented samples introduces 
         classification confusion — a valuable negative result highlighting data sufficiency requirements in medical audio ML.
