@@ -436,10 +436,13 @@
         </a>
       </div>
       <p class="project-desc">
-        Adapted the Cellular Neighborhood (CN) framework to non-spatial CyTOF data by constructing k-NN graphs
-        in protein expression space. Evaluated whether CN-augmented features improve GBM patient survival
-        prediction over a cell-type abundance baseline using Cox proportional hazards regression with
-        leave-one-out cross-validation.
+        Adapted the Cellular Neighborhood (CN) framework to non-spatial CyTOF mass cytometry data from 28 GBM patients (131,880 cells, 35 protein markers).
+        Constructed k-NN graphs in protein expression space as a substitute for physical tissue proximity, and engineered patient-level CN frequency features via MiniBatchKMeans clustering.
+
+        CN-augmented features outperformed cell-type frequency baselines across all survival metrics:
+        - C-index: 0.7005 (+16.4% vs. Leiden baseline)
+        - AUC at 300 days: 0.6738 (+22.3%)
+        - Log-rank p-value: 0.00238 (statistically significant risk group separation)
       </p>
       <div class="tags">
         <span class="tag">Survival Analysis</span>
@@ -459,9 +462,12 @@
         </a>
       </div>
       <p class="project-desc">
-        Analyzed LoRA and DAPT for legal question answering, identifying a low-resource break-even point
-        where domain-adaptive pretraining outperforms full fine-tuning. Provides practical guidance on
-        choosing adaptation strategies under resource constraints.
+        Compared two parameter-efficient adaptation strategies — LoRA and DAPT — on RoBERTa-base for the CaseHOLD legal QA benchmark (5-way multiple choice, 53K examples).
+
+        Key findings:
+        - DAPT-1000 achieved 74.73% accuracy, outperforming full fine-tuning (+0.69%)
+        - LoRA matched 95% of baseline performance using only 0.24% of parameters (0.3M vs 124.6M)
+        - Break-even point: DAPT outperforms LoRA with fewer than 500 unlabeled documents
       </p>
       <div class="tags">
         <span class="tag">NLP</span>
@@ -481,9 +487,13 @@
         </a>
       </div>
       <p class="project-desc">
-        Developed a context-aware hate speech detection model using DistilBERT and set-based learning.
-        Achieved a macro-F1 score of 0.847 through contrastive training, improving robustness across
-        diverse and nuanced language patterns.
+        Developed SENTRY, a set-based hate speech detection framework that aggregates semantically related tweets rather than classifying posts in isolation. Used 
+        DistilBERT with a permutation-equivariant architecture 
+        and hierarchical DPO contrastive loss.
+
+        Evaluated on Davidson dataset (24,783 tweets, 3-way classification):
+        - Macro-F1: 0.847 — substantially outperforming single-instance baselines
+        - Set-based aggregation particularly improved minority class (hate speech) detection
       </p>
       <div class="tags">
         <span class="tag">NLP</span>
@@ -498,9 +508,13 @@
         <span class="project-title">Multimodal Depression Detection using Clinical Text and Audio</span>
       </div>
       <p class="project-desc">
-        Built a multimodal depression detection model combining clinical text and acoustic features
-        using Bi-LSTM and CNN architectures. Improved predictive performance through window size
-        optimization on real-world datasets.
+        Built a multimodal depression detection model using Korean psychiatric consultation data (293 patients, 19,427 sentences) provided by ETRI. Fused clinical text features (Bi-LSTM with BPE tokenization) and 
+        acoustic features (Spectral CNN on MFCC) through a joint fully-connected layer.
+
+        Introduced window size optimization to determine the optimal dialogue context length:
+        - Best configuration: window=6, overlap=3
+        - Final accuracy: 76.92%, F1: 73.37%
+        - Outperformed text-only and audio-only baselines
       </p>
       <div class="tags">
         <span class="tag">Multimodal ML</span>
@@ -515,9 +529,12 @@
         <span class="project-title">Respiratory Disease Classification from Breathing Sounds</span>
       </div>
       <p class="project-desc">
-        Built a CNN-based respiratory disease classifier using MFCC features extracted from breathing
-        audio. Analyzed challenges including data imbalance, overfitting, and generalization — with
-        a focus on real-world deployment considerations.
+        Built a CNN-based respiratory disease classifier using MFCC features extracted from 917 breathing audio files (126 patients, 6 disease classes). 
+        Investigated the effect of 5 data augmentation techniques (white noise, shifting, stretching, reverse, minus) on model performance under severe class imbalance.
+
+        Key finding:
+        audio augmentation paradoxically decreased accuracy (mean accuracy dropped from ~0.91 to ~0.80), revealing that MFCC feature similarity across augmented samples introduces 
+        classification confusion — a valuable negative result highlighting data sufficiency requirements in medical audio ML.
       </p>
       <div class="tags">
         <span class="tag">CNN</span>
