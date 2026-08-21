@@ -320,6 +320,50 @@
   transition: all .2s;
 }
 .project-link-btn:hover { border-color: var(--accent); color: var(--accent); }
+    
+    /* ── EXPERIENCE & EDUCATION ──────────────── */
+.exp-list { display: flex; flex-direction: column; gap: 2rem; }
+.exp-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0 2rem;
+}
+.exp-date {
+  font-size: .82rem;
+  color: var(--muted);
+  padding-top: .2rem;
+  line-height: 1.5;
+}
+.exp-content {}
+.exp-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: .2rem;
+}
+.exp-sub {
+  font-size: .88rem;
+  color: var(--accent2);
+  margin-bottom: .5rem;
+}
+.exp-desc {
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.exp-desc ul {
+  margin-top: .4rem;
+  padding-left: 1.1rem;
+}
+.exp-desc li { margin-bottom: .3rem; }
+.exp-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+@media (max-width: 540px) {
+  .exp-item { grid-template-columns: 1fr; gap: .3rem; }
+}
   </style>
 </head>
 <body>
@@ -390,6 +434,58 @@
       When I'm not coding, I'm probably exploring Chapel Hill's coffee shops
       or watching something with subtitles I barely need.
     </p>
+  </div>
+</section>
+
+<!-- EXPERIENCE & EDUCATION -->
+<section id="experience">
+  <p class="section-label">Background</p>
+  <h2 class="section-title">Experience & Education</h2>
+  <div class="exp-list">
+
+    <!-- Research Intern -->
+    <div class="exp-item">
+      <div class="exp-date">Dec 2020 – Sep 2022</div>
+      <div class="exp-content">
+        <div class="exp-title">Research Intern</div>
+        <div class="exp-sub">Autonomous Mechanical Systems Lab · Sookmyung Women's University</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Built a multimodal depression detection model (Bi-LSTM + Spectral CNN) on Korean clinical data; achieved 76.92% accuracy and 73.37% F1 via window size optimization.</li>
+            <li>Contributed to SMA-based self-cooling wearable suit design for robotics applications.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="exp-divider">
+
+    <!-- UNC -->
+    <div class="exp-item">
+      <div class="exp-date">Aug 2025 – May 2027</div>
+      <div class="exp-content">
+        <div class="exp-title">M.S. in Computer Science</div>
+        <div class="exp-sub">University of North Carolina at Chapel Hill</div>
+        <div class="exp-desc">
+          Research interests: Machine Learning for Healthcare, NLP, Transfer Learning
+        </div>
+      </div>
+    </div>
+
+    <hr class="exp-divider">
+
+    <!-- Sookmyung -->
+    <div class="exp-item">
+      <div class="exp-date">Mar 2019 – Feb 2024</div>
+      <div class="exp-content">
+        <div class="exp-title">B.E. in Mechanical Engineering</div>
+        <div class="exp-sub">Sookmyung Women's University</div>
+        <div class="exp-desc">
+          GPA: 4.25/4.5 (96.99/100) · Graduated with Honors
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
